@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Cotações</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, p {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Cotações</h1>
+    <p>Gerado em: {{ data_hora_geracao|date:"d/m/Y H:i:s" }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Moeda</th>
+                <th>Valor (R$)</th>
+                <th>Data e Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+            <tr>
+                <td>{{ registro.tipo }}</td>
+                <td>R$ {{ registro.valor }}</td>
+                <td>{{ registro.data_hora|date:"d/m/Y H:i:s" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
